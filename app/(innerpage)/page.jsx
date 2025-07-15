@@ -826,7 +826,7 @@ const LandingPage = () => {
                 </div>
 
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  "{testimonial.content}"
+                 {` "${testimonial.content}"`}
                 </p>
 
                 <div className="flex items-center">

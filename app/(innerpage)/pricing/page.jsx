@@ -462,7 +462,7 @@ const PricingPage = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              See exactly what's included in each plan to make the best choice
+              See exactly what&apos;s included in each plan to make the best choice
               for your exam preparation.
             </p>
           </motion.div>
@@ -652,7 +652,7 @@ const PricingPage = () => {
                 </div>
 
                 <p className="text-gray-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
-                  "{testimonial.content}"
+                  {`"${testimonial.content}"`}
                 </p>
 
                 <div className="inline-flex items-center px-2 sm:px-3 py-1 bg-gradient-to-r from-red-50 to-orange-50 text-red-700 rounded-full text-xs sm:text-sm font-semibold">
