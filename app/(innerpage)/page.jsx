@@ -237,7 +237,7 @@ const LandingPage = () => {
       </motion.nav>
 
       {/* Enhanced Hero Section */}
-      <section className="relative pt-32 pb-20 px-6">
+      <section className="relative pt-16 pb-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Column */}
@@ -493,7 +493,7 @@ const LandingPage = () => {
       </section>
 
       {/* Enhanced Features Section */}
-      <section id="features" className="py-32 bg-white">
+      <section id="features" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -568,7 +568,7 @@ const LandingPage = () => {
       </section>
 
       {/* Enhanced How It Works Section */}
-      <section id="how-it-works" className="py-32 bg-gradient-to-br from-gray-50 to-white">
+      <section id="how-it-works" className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -653,7 +653,7 @@ const LandingPage = () => {
       </section>
 
       {/* Enhanced Testimonials Section */}
-      <section id="testimonials" className="py-32 bg-white">
+      <section id="testimonials" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -712,7 +712,7 @@ const LandingPage = () => {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="py-32 bg-gradient-to-br from-red-600 via-red-700 to-red-800 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-red-600 via-red-700 to-red-800 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
