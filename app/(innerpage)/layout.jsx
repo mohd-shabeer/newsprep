@@ -13,7 +13,7 @@ const ProtectLayout = ({ children }) => {
   const [showBottomNav, setShowBottomNav] = useState(true);
 
   return (
-    <ProtectedRoute allowedRoutes={["/","/our-story","/our-features","/about-us", "/contact-us", "/newsonmap", "/landing"]}>
+    <ProtectedRoute allowedRoutes={["/","/pricing","/our-story","/our-features","/about-us", "/contact-us", "/newsonmap", "/landing"]}>
       <ChildrenProvider>
         <div className="relative min-h-screen flex bg-white">
           {/* <SideBar /> */}
