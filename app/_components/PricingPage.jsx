@@ -41,7 +41,8 @@ const PricingPage = () => {
       name: "Foundation",
       price: 29.99,
       yearlyPrice: 299.99,
-      description: "Perfect for beginners starting their competitive exam journey",
+      description:
+        "Perfect for beginners starting their competitive exam journey",
       popular: false,
       color: "from-blue-500 to-cyan-600",
       bgColor: "bg-blue-50",
@@ -92,7 +93,8 @@ const PricingPage = () => {
       name: "Elite",
       price: 99.99,
       yearlyPrice: 999.99,
-      description: "Ultimate package for civil services & defense exam aspirants",
+      description:
+        "Ultimate package for civil services & defense exam aspirants",
       popular: false,
       color: "from-purple-500 to-indigo-600",
       bgColor: "bg-purple-50",
@@ -462,8 +464,8 @@ const PricingPage = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              See exactly what&apos;s included in each plan to make the best choice
-              for your exam preparation.
+              See exactly what&apos;s included in each plan to make the best
+              choice for your exam preparation.
             </p>
           </motion.div>
 
@@ -603,71 +605,6 @@ const PricingPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Success Stories */}
-      <section className="py-6 sm:py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 text-green-700 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
-              <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              Success Stories
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-              <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Trusted by Toppers
-              </span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-center mb-3 sm:mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4 object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-900 text-sm sm:text-base">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-xs sm:text-sm text-gray-500">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-gray-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
-                  {`"${testimonial.content}"`}
-                </p>
-
-                <div className="inline-flex items-center px-2 sm:px-3 py-1 bg-gradient-to-r from-red-50 to-orange-50 text-red-700 rounded-full text-xs sm:text-sm font-semibold">
-                  <Crown className="w-3 h-3 mr-1" />
-                  {testimonial.plan} Plan
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-    
-
-    
     </div>
   );
 };

@@ -40,6 +40,8 @@ import {
   BarChart3,
   Plus,
   Minus,
+  Menu,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import PricingPage from "../_components/PricingPage";
@@ -50,6 +52,7 @@ const LandingPage = () => {
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [openFAQ, setOpenFAQ] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Enhanced mock data with real images
   const perspectives = [
@@ -253,24 +256,29 @@ const LandingPage = () => {
   const faqs = [
     {
       question: "How does the multi-perspective feature work?",
-      answer: "Each news story is analyzed from different actor-based viewpoints - environmental, political, economic, and social. This helps you understand the complete picture and prepare for comprehensive exam questions."
+      answer:
+        "Each news story is analyzed from different actor-based viewpoints - environmental, political, economic, and social. This helps you understand the complete picture and prepare for comprehensive exam questions.",
     },
     {
       question: "Can I save articles for later review?",
-      answer: "Yes! Our smart saving feature lets you organize articles into custom folders with notes. You can easily review your saved insights anytime and build your personal knowledge base."
+      answer:
+        "Yes! Our smart saving feature lets you organize articles into custom folders with notes. You can easily review your saved insights anytime and build your personal knowledge base.",
     },
     {
       question: "What makes Doutya different from other news apps?",
-      answer: "Doutya is specifically built for serious aspirants. We focus on exam-ready content with multi-perspective analysis, peer trends, and smart organization - all designed to enhance your preparation efficiency."
+      answer:
+        "Doutya is specifically built for serious aspirants. We focus on exam-ready content with multi-perspective analysis, peer trends, and smart organization - all designed to enhance your preparation efficiency.",
     },
     {
       question: "How often is the content updated?",
-      answer: "We update our content daily with over 10,000 new stories. Our AI ensures you get the most relevant and exam-focused current affairs content consistently."
+      answer:
+        "We update our content daily with over 10,000 new stories. Our AI ensures you get the most relevant and exam-focused current affairs content consistently.",
     },
     {
       question: "Is there a free version available?",
-      answer: "Yes, we offer different plans to respect your budget. You can start with basic features and upgrade as needed - no hidden costs, just transparent pricing for serious preparation."
-    }
+      answer:
+        "Yes, we offer different plans to respect your budget. You can start with basic features and upgrade as needed - no hidden costs, just transparent pricing for serious preparation.",
+    },
   ];
 
   return (
@@ -281,75 +289,140 @@ const LandingPage = () => {
         animate={{ opacity: 1, y: 0 }}
         className="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50"
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex justify-between items-center h-16 sm:h-20">
             <motion.div
-              className="flex items-center space-x-3"
+              className="flex items-center space-x-2 sm:space-x-3"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center shadow-lg">
-                <Newspaper className="w-6 h-6 text-white" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center shadow-lg">
+                <Newspaper className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                 Doutya
               </span>
             </motion.div>
 
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
               <a
                 href="#features"
-                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium"
+                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium text-sm lg:text-base"
               >
                 Features
               </a>
               <a
                 href="#how-it-works"
-                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium"
+                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium text-sm lg:text-base"
               >
                 How it Works
               </a>
               <a
                 href="#pricing"
-                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium"
+                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium text-sm lg:text-base"
               >
                 Pricing
               </a>
               <a
                 href="#testimonials"
-                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium"
+                className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium text-sm lg:text-base"
               >
                 Reviews
               </a>
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-2xl hover:shadow-lg transition-all duration-300 font-semibold"
+                className="bg-gradient-to-r from-red-600 to-red-700 text-white px-4 lg:px-8 py-2 lg:py-3 rounded-xl lg:rounded-2xl hover:shadow-lg transition-all duration-300 font-semibold text-sm lg:text-base"
               >
                 Start Learning
               </motion.button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-gray-600" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-600" />
+              )}
+            </motion.button>
           </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-xl"
+              >
+                <div className="px-4 py-6 space-y-4">
+                  <a
+                    href="#features"
+                    className="block text-gray-600 hover:text-red-600 transition-colors font-medium py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Features
+                  </a>
+                  <a
+                    href="#how-it-works"
+                    className="block text-gray-600 hover:text-red-600 transition-colors font-medium py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    How it Works
+                  </a>
+                  <a
+                    href="#pricing"
+                    className="block text-gray-600 hover:text-red-600 transition-colors font-medium py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Pricing
+                  </a>
+                  <a
+                    href="#testimonials"
+                    className="block text-gray-600 hover:text-red-600 transition-colors font-medium py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Reviews
+                  </a>
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-xl font-semibold mt-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Start Learning
+                  </motion.button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.nav>
 
       {/* Enhanced Hero Section */}
-      <section className="relative pt-16 pb-12 px-6">
+      <section className="relative pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left Column */}
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="text-left"
+              className="text-center lg:text-left"
             >
               <motion.div variants={fadeInUp}>
-                <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 text-red-700 rounded-full text-sm font-semibold mb-8">
-                  <Sparkles className="w-4 h-4 mr-2" />
+                <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 text-red-700 rounded-full text-xs sm:text-sm font-semibold mb-6 sm:mb-8">
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   Perfect for Serious Aspirants
                 </div>
 
-                <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6">
                   <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                     Read What Matters.
                   </span>
@@ -366,37 +439,38 @@ const LandingPage = () => {
 
               <motion.p
                 variants={fadeInUp}
-                className="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg"
+                className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0"
               >
-                Structured current affairs for aspirants—multi-perspective summaries, smart saving, and exam-ready focus.
+                Structured current affairs for aspirants—multi-perspective
+                summaries, smart saving, and exam-ready focus.
               </motion.p>
 
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col sm:flex-row gap-4 mb-12"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 justify-center lg:justify-start"
               >
                 <motion.button
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center group"
+                  className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-base sm:text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center group"
                 >
                   Start Learning
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
 
                 <motion.button
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white border-2 border-gray-200 text-gray-700 px-10 py-4 rounded-2xl text-lg font-semibold hover:border-red-300 hover:bg-red-50 transition-all duration-300 flex items-center justify-center shadow-lg"
+                  className="bg-white border-2 border-gray-200 text-gray-700 px-6 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-base sm:text-lg font-semibold hover:border-red-300 hover:bg-red-50 transition-all duration-300 flex items-center justify-center shadow-lg"
                 >
-                  <Play className="w-5 h-5 mr-2" />
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Watch Demo
                 </motion.button>
               </motion.div>
 
               <motion.div
                 variants={fadeInUp}
-                className="flex items-center space-x-8 text-sm text-gray-500"
+                className="flex items-center justify-center lg:justify-start space-x-4 sm:space-x-8 text-xs sm:text-sm text-gray-500"
               >
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
@@ -418,50 +492,50 @@ const LandingPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative mt-8 lg:mt-0"
             >
-              <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 relative overflow-hidden">
+              <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 relative overflow-hidden">
                 {/* Glass morphism background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-gray-50/30 backdrop-blur-sm"></div>
 
                 <div className="relative z-10">
                   {/* Demo Header */}
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6 lg:mb-8">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
                         Live Perspective Demo
                       </h3>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-xs sm:text-sm text-gray-500 mt-1">
                         See how one story looks from different angles
                       </p>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-1 sm:space-x-2">
                       <button
                         onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                        className="p-3 hover:bg-gray-100 rounded-xl transition-colors"
+                        className="p-2 sm:p-3 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-colors"
                       >
                         {isAutoPlaying ? (
-                          <Pause className="w-4 h-4" />
+                          <Pause className="w-3 h-3 sm:w-4 sm:h-4" />
                         ) : (
-                          <Play className="w-4 h-4" />
+                          <Play className="w-3 h-3 sm:w-4 sm:h-4" />
                         )}
                       </button>
                       <button
                         onClick={() => setCurrentPerspective(0)}
-                        className="p-3 hover:bg-gray-100 rounded-xl transition-colors"
+                        className="p-2 sm:p-3 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-colors"
                       >
-                        <RotateCcw className="w-4 h-4" />
+                        <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                     </div>
                   </div>
 
                   {/* Perspective Selector */}
-                  <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
                     {perspectives.map((perspective, index) => (
                       <motion.button
                         key={index}
                         onClick={() => setCurrentPerspective(index)}
-                        className={`p-4 rounded-2xl text-left transition-all duration-300 ${
+                        className={`p-2 sm:p-3 lg:p-4 rounded-lg sm:rounded-xl lg:rounded-2xl text-left transition-all duration-300 ${
                           currentPerspective === index
                             ? `bg-gradient-to-r ${perspective.color} text-white shadow-lg transform scale-105`
                             : "bg-gray-50 hover:bg-gray-100 text-gray-700"
@@ -474,7 +548,7 @@ const LandingPage = () => {
                         <div className="text-xs font-semibold opacity-90">
                           {perspective.tag}
                         </div>
-                        <div className="text-sm font-bold mt-1">
+                        <div className="text-xs sm:text-sm font-bold mt-1">
                           {perspective.viewpoint}
                         </div>
                       </motion.button>
@@ -489,9 +563,9 @@ const LandingPage = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -20, scale: 0.95 }}
                       transition={{ duration: 0.4 }}
-                      className="space-y-6"
+                      className="space-y-3 sm:space-y-4 lg:space-y-6"
                     >
-                      <div className="relative aspect-video rounded-2xl overflow-hidden">
+                      <div className="relative aspect-video rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden">
                         <img
                           src={perspectives[currentPerspective].image}
                           alt={perspectives[currentPerspective].viewpoint}
@@ -499,23 +573,23 @@ const LandingPage = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <div
-                          className={`absolute top-4 left-4 px-3 py-1 bg-gradient-to-r ${perspectives[currentPerspective].color} text-white text-xs font-bold rounded-full`}
+                          className={`absolute top-2 sm:top-4 left-2 sm:left-4 px-2 sm:px-3 py-1 bg-gradient-to-r ${perspectives[currentPerspective].color} text-white text-xs font-bold rounded-full`}
                         >
                           {perspectives[currentPerspective].viewpoint}{" "}
                           Perspective
                         </div>
                       </div>
 
-                      <div className="space-y-3">
-                        <h4 className="text-lg font-bold text-gray-900 leading-tight">
+                      <div className="space-y-2 sm:space-y-3">
+                        <h4 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 leading-tight">
                           {perspectives[currentPerspective].title}
                         </h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
+                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                           {perspectives[currentPerspective].description}
                         </p>
 
                         <div className="flex items-center justify-between pt-2">
-                          <div className="flex items-center space-x-3 text-xs text-gray-500">
+                          <div className="flex items-center space-x-2 sm:space-x-3 text-xs text-gray-500">
                             <div className="flex items-center">
                               <Clock className="w-3 h-3 mr-1" />2 min read
                             </div>
@@ -524,7 +598,7 @@ const LandingPage = () => {
                               1.2k
                             </div>
                           </div>
-                          <button className="text-red-600 text-sm font-semibold hover:text-red-700 flex items-center">
+                          <button className="text-red-600 text-xs sm:text-sm font-semibold hover:text-red-700 flex items-center">
                             Read more
                             <ChevronRight className="w-3 h-3 ml-1" />
                           </button>
@@ -534,14 +608,14 @@ const LandingPage = () => {
                   </AnimatePresence>
 
                   {/* Enhanced Progress Dots */}
-                  <div className="flex justify-center space-x-2 mt-8">
+                  <div className="flex justify-center space-x-2 mt-4 sm:mt-6 lg:mt-8">
                     {perspectives.map((_, index) => (
                       <motion.button
                         key={index}
                         onClick={() => setCurrentPerspective(index)}
                         className={`h-2 rounded-full transition-all duration-300 ${
                           currentPerspective === index
-                            ? "bg-red-600 w-8"
+                            ? "bg-red-600 w-6 sm:w-8"
                             : "bg-gray-300 w-2 hover:bg-gray-400"
                         }`}
                         whileHover={{ scale: 1.2 }}
@@ -559,9 +633,9 @@ const LandingPage = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg"
+                className="absolute -top-3 sm:-top-6 -right-3 sm:-right-6 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg"
               >
-                <Brain className="w-6 h-6 text-white" />
+                <Brain className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
               </motion.div>
 
               <motion.div
@@ -572,9 +646,9 @@ const LandingPage = () => {
                   ease: "easeInOut",
                   delay: 1,
                 }}
-                className="absolute -bottom-6 -left-6 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg"
+                className="absolute -bottom-3 sm:-bottom-6 -left-3 sm:-left-6 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg"
               >
-                <Target className="w-6 h-6 text-white" />
+                <Target className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
               </motion.div>
             </motion.div>
           </div>
@@ -582,21 +656,21 @@ const LandingPage = () => {
 
         {/* Enhanced Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
-          <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
-          <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+          <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+          <div className="absolute top-1/2 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+          <div className="absolute bottom-1/4 left-1/2 w-48 h-48 sm:w-96 sm:h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
         </div>
       </section>
 
       {/* Enhanced Stats Section */}
-      <section className="py-12 bg-gradient-to-r from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-8 sm:py-12 bg-gradient-to-r from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -606,19 +680,21 @@ const LandingPage = () => {
               >
                 <motion.div
                   whileHover={{ scale: 1.1, y: -5 }}
-                  className={`w-20 h-20 bg-gradient-to-br ${stat.color} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                  className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br ${stat.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300`}
                 >
-                  <stat.icon className="w-8 h-8 text-white" />
+                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="text-4xl font-bold text-gray-900 mb-2"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2"
                 >
                   {stat.number}
                 </motion.div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -626,19 +702,19 @@ const LandingPage = () => {
       </section>
 
       {/* Enhanced Features Section */}
-      <section id="features" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="features" className="py-8 sm:py-12 lg:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
-              <Zap className="w-4 h-4 mr-2" />
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 text-blue-700 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Features That Matter
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                 Made for Aspirants.
               </span>
@@ -647,12 +723,13 @@ const LandingPage = () => {
                 Built for Clarity.
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From actor-based viewpoints to smart organization and peer trends, every feature is built to help you prepare better.
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              From actor-based viewpoints to smart organization and peer trends,
+              every feature is built to help you prepare better.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -665,14 +742,14 @@ const LandingPage = () => {
                 className="group relative"
               >
                 <div
-                  className={`bg-white rounded-3xl p-8 shadow-lg border-2 transition-all duration-500 hover:shadow-2xl ${
+                  className={`bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg border-2 transition-all duration-500 hover:shadow-2xl ${
                     hoveredFeature === index
                       ? "border-red-200 scale-105"
                       : "border-gray-100"
                   }`}
                 >
                   {/* Feature Image */}
-                  <div className="aspect-video rounded-2xl overflow-hidden mb-6 relative">
+                  <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 relative">
                     <img
                       src={feature.image}
                       alt={feature.title}
@@ -681,25 +758,25 @@ const LandingPage = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`absolute top-4 left-4 w-12 h-12 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center shadow-lg`}
+                      className={`absolute top-3 sm:top-4 left-3 sm:left-4 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br ${feature.color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg`}
                     >
-                      <feature.icon className="w-6 h-6 text-white" />
+                      <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                     </motion.div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-gray-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
                     {feature.description}
                   </p>
 
                   <motion.button
                     whileHover={{ x: 5 }}
-                    className="inline-flex items-center font-semibold text-red-600 group"
+                    className="inline-flex items-center font-semibold text-red-600 group text-sm sm:text-base"
                   >
                     Learn more
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </motion.button>
                 </div>
               </motion.div>
@@ -711,20 +788,20 @@ const LandingPage = () => {
       {/* Enhanced How It Works Section */}
       <section
         id="how-it-works"
-        className="py-16 bg-gradient-to-br from-gray-50 to-white"
+        className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
-              <Layers className="w-4 h-4 mr-2" />
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
+              <Layers className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Simple Steps, Powerful Results
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                 Prep that's Simple to Use,
               </span>
@@ -733,12 +810,13 @@ const LandingPage = () => {
                 Powerful in Impact.
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Read stories. See every angle. Save what matters. Review your insights. Do it all, in a few intuitive steps.
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              Read stories. See every angle. Save what matters. Review your
+              insights. Do it all, in a few intuitive steps.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {[
               {
                 step: "01",
@@ -779,8 +857,8 @@ const LandingPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="text-center group"
               >
-                <div className="relative mb-8">
-                  <div className="aspect-video rounded-2xl overflow-hidden">
+                <div className="relative mb-6 sm:mb-8">
+                  <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden">
                     <img
                       src={step.image}
                       alt={step.title}
@@ -790,19 +868,19 @@ const LandingPage = () => {
                   </div>
                   <motion.div
                     whileHover={{ scale: 1.1, y: -5 }}
-                    className={`absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
+                    className={`absolute -bottom-4 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br ${step.color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl`}
                   >
-                    <step.icon className="w-8 h-8 text-white" />
+                    <step.icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
                   </motion.div>
                 </div>
 
-                <div className="text-sm font-bold text-red-600 mb-3">
+                <div className="text-xs sm:text-sm font-bold text-red-600 mb-2 sm:mb-3">
                   {step.step}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   {step.description}
                 </p>
               </motion.div>
@@ -810,26 +888,26 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className=" bg-white">
+      <section id="pricing">
         <PricingPage />
       </section>
-
       {/* Enhanced Testimonials Section */}
-      <section id="testimonials" className="py-16 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section
+        id="testimonials"
+        className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
-              <Users className="w-4 h-4 mr-2" />
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 text-blue-700 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
+              <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               What Aspirants Say
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                 Trusted by Serious
               </span>
@@ -838,12 +916,13 @@ const LandingPage = () => {
                 Aspirants Across India
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              "Breaking down news from multiple sides changed how I prepare for UPSC." — Anjali, Delhi
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              "Breaking down news from multiple sides changed how I prepare for
+              UPSC." — Anjali, Delhi
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -851,18 +930,18 @@ const LandingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center mb-6">
+                <div className="flex items-center mb-4 sm:mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
                     />
                   ))}
                 </div>
 
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                   "{testimonial.content}"
                 </p>
 
@@ -870,13 +949,13 @@ const LandingPage = () => {
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4 object-cover"
                   />
                   <div>
-                    <div className="font-semibold text-gray-900">
+                    <div className="font-semibold text-gray-900 text-sm sm:text-base">
                       {testimonial.name}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-xs sm:text-sm text-gray-500">
                       {testimonial.role}
                     </div>
                   </div>
@@ -888,19 +967,19 @@ const LandingPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
+      <section id="faq" className="py-8 sm:py-12 lg:py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
-              <MessageCircle className="w-4 h-4 mr-2" />
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
+              <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Common Questions
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                 You Might Be
               </span>
@@ -909,12 +988,13 @@ const LandingPage = () => {
                 Wondering…
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to know—about features, pricing, or how Doutya fits into your study routine.
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              Everything you need to know—about features, pricing, or how Doutya
+              fits into your study routine.
             </p>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -922,18 +1002,20 @@ const LandingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl overflow-hidden"
+                className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
-                  <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <span className="font-semibold text-gray-900 pr-4 text-sm sm:text-base lg:text-lg">
+                    {faq.question}
+                  </span>
                   <motion.div
                     animate={{ rotate: openFAQ === index ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown className="w-5 h-5 text-gray-500" />
+                    <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
                   </motion.div>
                 </button>
                 <AnimatePresence>
@@ -945,7 +1027,7 @@ const LandingPage = () => {
                       transition={{ duration: 0.3 }}
                       className="border-t border-gray-200"
                     >
-                      <div className="px-8 py-6 text-gray-600 leading-relaxed">
+                      <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 text-gray-600 leading-relaxed text-sm sm:text-base">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -958,48 +1040,62 @@ const LandingPage = () => {
       </section>
 
       {/* Enhanced Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center">
-                  <Newspaper className="w-6 h-6 text-white" />
+      <footer className="bg-gray-900 text-white py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+            <div className="sm:col-span-2 lg:col-span-2">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center">
+                  <Newspaper className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <span className="text-2xl font-bold">Doutya</span>
+                <span className="text-xl sm:text-2xl font-bold">Doutya</span>
               </div>
-              <h3 className="text-xl font-bold mb-4">Built in India, for India's Future Thinkers.</h3>
-              <p className="text-gray-400 mb-8 max-w-md leading-relaxed">
-                Doutya PrepHelp — a purposeful tool for smart, serious preparation.
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
+                Built in India, for India's Future Thinkers.
+              </h3>
+              <p className="text-gray-400 mb-6 sm:mb-8 max-w-md leading-relaxed text-sm sm:text-base">
+                Doutya PrepHelp — a purposeful tool for smart, serious
+                preparation.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-3 sm:space-x-4">
                 {[Share2, Users, Globe, MessageCircle].map((Icon, index) => (
                   <motion.button
                     key={index}
                     whileHover={{ scale: 1.2, y: -3 }}
-                    className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-all duration-300"
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-all duration-300"
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </motion.button>
                 ))}
               </div>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold mb-6">Product</h4>
-              <ul className="space-y-3 text-gray-400">
+              <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">
+                Product
+              </h4>
+              <ul className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
                 <li>
-                  <a href="#features" className="hover:text-white transition-colors">
+                  <a
+                    href="#features"
+                    className="hover:text-white transition-colors"
+                  >
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#how-it-works" className="hover:text-white transition-colors">
+                  <a
+                    href="#how-it-works"
+                    className="hover:text-white transition-colors"
+                  >
                     How It Works
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="hover:text-white transition-colors">
+                  <a
+                    href="#pricing"
+                    className="hover:text-white transition-colors"
+                  >
                     Pricing
                   </a>
                 </li>
@@ -1012,8 +1108,10 @@ const LandingPage = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-bold mb-6">Company</h4>
-              <ul className="space-y-3 text-gray-400">
+              <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">
+                Company
+              </h4>
+              <ul className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
                     About
@@ -1038,12 +1136,12 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Doutya PrepHelp. All rights reserved.
-              Built with ❤️ for India's future thinkers.
+          <div className="border-t border-gray-800 mt-8 sm:mt-12 lg:mt-16 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
+              &copy; {new Date().getFullYear()} Doutya PrepHelp. All rights
+              reserved. Built with ❤️ for India's future thinkers.
             </p>
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <div className="flex items-center space-x-4 sm:space-x-6 text-xs sm:text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">
                 Privacy
               </a>
