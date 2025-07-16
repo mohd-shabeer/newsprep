@@ -803,7 +803,7 @@ const LandingPage = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Prep that's Simple to Use,
+                Prep that&apos;s Simple to Use,
               </span>
               <br />
               <span className="bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent">
@@ -917,8 +917,8 @@ const LandingPage = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-              "Breaking down news from multiple sides changed how I prepare for
-              UPSC." — Anjali, Delhi
+              {`"Breaking down news from multiple sides changed how I prepare for
+              UPSC." — Anjali, Delhi`}
             </p>
           </motion.div>
 
@@ -942,7 +942,7 @@ const LandingPage = () => {
                 </div>
 
                 <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                  "{testimonial.content}"
+                 {`"${testimonial.content}"`}
                 </p>
 
                 <div className="flex items-center">
@@ -1051,7 +1051,7 @@ const LandingPage = () => {
                 <span className="text-xl sm:text-2xl font-bold">Doutya</span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
-                Built in India, for India's Future Thinkers.
+                Built in India, for India&apos;s Future Thinkers.
               </h3>
               <p className="text-gray-400 mb-6 sm:mb-8 max-w-md leading-relaxed text-sm sm:text-base">
                 Doutya PrepHelp — a purposeful tool for smart, serious
@@ -1139,7 +1139,7 @@ const LandingPage = () => {
           <div className="border-t border-gray-800 mt-8 sm:mt-12 lg:mt-16 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
               &copy; {new Date().getFullYear()} Doutya PrepHelp. All rights
-              reserved. Built with ❤️ for India's future thinkers.
+              reserved. Built with ❤️ for India&apos;s future thinkers.
             </p>
             <div className="flex items-center space-x-4 sm:space-x-6 text-xs sm:text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">
