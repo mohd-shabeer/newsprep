@@ -38,14 +38,18 @@ import {
   Heart,
   MessageCircle,
   BarChart3,
+  Plus,
+  Minus,
 } from "lucide-react";
 import Link from "next/link";
+import PricingPage from "../_components/PricingPage";
 
 const LandingPage = () => {
   const [currentPerspective, setCurrentPerspective] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [openFAQ, setOpenFAQ] = useState(null);
 
   // Enhanced mock data with real images
   const perspectives = [
@@ -151,7 +155,7 @@ const LandingPage = () => {
       icon: Eye,
       title: "Multiple Perspectives",
       description:
-        "Master current affairs for UPSC with environmental, political, economic, and social viewpoints. Essential for competitive exam's preparation.",
+        "Actor-based viewpoints help you understand complex current affairs from environmental, political, economic, and social angles essential for comprehensive exam preparation.",
       color: "from-red-500 to-pink-600",
       bgColor: "bg-red-50",
       image:
@@ -161,7 +165,7 @@ const LandingPage = () => {
       icon: Globe,
       title: "Global Affairs Map",
       description:
-        "Visualize international relations and geopolitical events crucial for IFS and CDS. Perfect for understanding global dynamics.",
+        "Visualize international relations and geopolitical events with smart organization tools. Perfect for understanding global dynamics and trends.",
       color: "from-blue-500 to-cyan-600",
       bgColor: "bg-blue-50",
       image:
@@ -169,9 +173,9 @@ const LandingPage = () => {
     },
     {
       icon: Bookmark,
-      title: "Smart Study Notes",
+      title: "Smart Saving",
       description:
-        "Create organized study materials with custom folders and notes. Build your knowledge base for competetive exam's preparation.",
+        "Save what matters with organized folders and notes. Build your knowledge base efficiently and review insights when you need them most.",
       color: "from-green-500 to-emerald-600",
       bgColor: "bg-green-50",
       image:
@@ -179,9 +183,9 @@ const LandingPage = () => {
     },
     {
       icon: TrendingUp,
-      title: "Exam-Focused Insights",
+      title: "Peer Trends",
       description:
-        "Get AI-powered analysis of trending topics and important events. Stay ahead with content curated for competitive exam's success.",
+        "See what fellow aspirants are reading and saving. Stay connected with trending topics and important events in the competitive exam community.",
       color: "from-purple-500 to-indigo-600",
       bgColor: "bg-purple-50",
       image:
@@ -210,7 +214,7 @@ const LandingPage = () => {
     },
     {
       number: "5K+",
-      label: "UPSC Aspirants",
+      label: "Serious Aspirants",
       icon: Users,
       color: "from-purple-500 to-indigo-500",
     },
@@ -218,32 +222,55 @@ const LandingPage = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      role: "UPSC CSE 2023 Rank 45",
+      name: "Anjali",
+      role: "UPSC Aspirant, Delhi",
       content:
-        "Doutya's multiple perspectives helped me understand complex current affairs deeply. Essential for UPSC preparation!",
+        "Breaking down news from multiple sides changed how I prepare for UPSC. The actor-based perspectives make complex topics so much clearer.",
       avatar:
         "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
       rating: 5,
     },
     {
       name: "Arjun Patel",
-      role: "IFS Officer 2023",
+      role: "IFS Aspirant, Mumbai",
       content:
-        "The perspective breakdown is incredible for understanding international relations and environmental policies.",
+        "The smart saving feature helps me organize my study material perfectly. I can review key insights anytime, anywhere.",
       avatar:
         "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
       rating: 5,
     },
     {
       name: "Sneha Reddy",
-      role: "CDS Qualified 2023",
+      role: "CDS Aspirant, Bangalore",
       content:
-        "Perfect for staying updated with defense and strategic affairs. Saved me hours of research every week.",
+        "Seeing what other aspirants are reading keeps me updated with trending topics. It's like having a study group online.",
       avatar:
         "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
       rating: 5,
     },
+  ];
+
+  const faqs = [
+    {
+      question: "How does the multi-perspective feature work?",
+      answer: "Each news story is analyzed from different actor-based viewpoints - environmental, political, economic, and social. This helps you understand the complete picture and prepare for comprehensive exam questions."
+    },
+    {
+      question: "Can I save articles for later review?",
+      answer: "Yes! Our smart saving feature lets you organize articles into custom folders with notes. You can easily review your saved insights anytime and build your personal knowledge base."
+    },
+    {
+      question: "What makes Doutya different from other news apps?",
+      answer: "Doutya is specifically built for serious aspirants. We focus on exam-ready content with multi-perspective analysis, peer trends, and smart organization - all designed to enhance your preparation efficiency."
+    },
+    {
+      question: "How often is the content updated?",
+      answer: "We update our content daily with over 10,000 new stories. Our AI ensures you get the most relevant and exam-focused current affairs content consistently."
+    },
+    {
+      question: "Is there a free version available?",
+      answer: "Yes, we offer different plans to respect your budget. You can start with basic features and upgrade as needed - no hidden costs, just transparent pricing for serious preparation."
+    }
   ];
 
   return (
@@ -281,12 +308,12 @@ const LandingPage = () => {
               >
                 How it Works
               </a>
-              <Link
-                href="/pricing"
+              <a
+                href="#pricing"
                 className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium"
               >
                 Pricing
-              </Link>
+              </a>
               <a
                 href="#testimonials"
                 className="text-gray-600 hover:text-red-600 transition-all duration-300 font-medium"
@@ -298,7 +325,7 @@ const LandingPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-2xl hover:shadow-lg transition-all duration-300 font-semibold"
               >
-                Get Started
+                Start Learning
               </motion.button>
             </div>
           </div>
@@ -319,16 +346,20 @@ const LandingPage = () => {
               <motion.div variants={fadeInUp}>
                 <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 text-red-700 rounded-full text-sm font-semibold mb-8">
                   <Sparkles className="w-4 h-4 mr-2" />
-                  Perfect for Competitive Exam&apos;s Preparation
+                  Perfect for Serious Aspirants
                 </div>
 
                 <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
                   <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                    One News,
+                    Read What Matters.
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent">
-                    Every Angle
+                    Understand Every Angle.
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                    Lead the Conversation.
                   </span>
                 </h1>
               </motion.div>
@@ -337,10 +368,7 @@ const LandingPage = () => {
                 variants={fadeInUp}
                 className="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg"
               >
-                Master current affairs for competetive exams.
-                Understand every news story from multiple perspectives -
-                environmental, political, economic, and social viewpoints for
-                comprehensive exam preparation.
+                Structured current affairs for aspirants—multi-perspective summaries, smart saving, and exam-ready focus.
               </motion.p>
 
               <motion.div
@@ -352,7 +380,7 @@ const LandingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center group"
                 >
-                  Start Your Preparation
+                  Start Learning
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
 
@@ -372,15 +400,15 @@ const LandingPage = () => {
               >
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                  UPSC focused
+                  Multi-perspective
                 </div>
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  Multiple perspectives
+                  Smart saving
                 </div>
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                  Current affairs mastery
+                  Exam-ready
                 </div>
               </motion.div>
             </motion.div>
@@ -608,21 +636,19 @@ const LandingPage = () => {
           >
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
               <Zap className="w-4 h-4 mr-2" />
-              Competitive Exam Tools
+              Features That Matter
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Everything you need for
+                Made for Aspirants.
               </span>
               <br />
               <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">
-                Competitive Exam success
+                Built for Clarity.
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Master current affairs for competetive with our
-              comprehensive suite of tools designed for these four critical
-              examinations.
+              From actor-based viewpoints to smart organization and peer trends, every feature is built to help you prepare better.
             </p>
           </motion.div>
 
@@ -696,47 +722,50 @@ const LandingPage = () => {
           >
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
               <Layers className="w-4 h-4 mr-2" />
-              Study Method
+              Simple Steps, Powerful Results
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Master Current Affairs,
+                Prep that's Simple to Use,
               </span>
               <br />
               <span className="bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent">
-                Ace Competitive Exams
+                Powerful in Impact.
               </span>
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Read stories. See every angle. Save what matters. Review your insights. Do it all, in a few intuitive steps.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-12">
             {[
               {
                 step: "01",
-                title: "AI Content Curation",
+                title: "Read Stories",
                 description:
-                  "Our AI analyzes thousands of news sources and curates content specifically relevant for competetive exams.",
-                icon: Brain,
+                  "Access curated current affairs content specifically relevant for competitive exams, updated daily with the most important stories.",
+                icon: BookOpen,
                 color: "from-red-500 to-pink-500",
                 image:
                   "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
               },
               {
                 step: "02",
-                title: "Perspective Analysis",
+                title: "See Every Angle",
                 description:
-                  "Each topic is analyzed from multiple angles - political, economic, environmental, and social - essential for competitive exam's preparation.",
-                icon: Filter,
+                  "Understand each topic from multiple actor-based perspectives - political, economic, environmental, and social viewpoints for comprehensive understanding.",
+                icon: Eye,
                 color: "from-blue-500 to-cyan-500",
                 image:
                   "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
               },
               {
                 step: "03",
-                title: "Exam-Ready Knowledge",
+                title: "Save & Review",
                 description:
-                  "Study current affairs with confidence, create notes, and build the comprehensive understanding needed for competitive exam's success.",
-                icon: Lightbulb,
+                  "Smart saving with organized folders and notes. Review your insights anytime and build exam-ready knowledge systematically.",
+                icon: Bookmark,
                 color: "from-green-500 to-emerald-500",
                 image:
                   "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
@@ -782,8 +811,13 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className=" bg-white">
+        <PricingPage />
+      </section>
+
       {/* Enhanced Testimonials Section */}
-      <section id="testimonials" className="py-16 bg-white">
+      <section id="testimonials" className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -791,19 +825,22 @@ const LandingPage = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 text-green-700 rounded-full text-sm font-semibold mb-6">
-              <Award className="w-4 h-4 mr-2" />
-              Success Stories
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
+              <Users className="w-4 h-4 mr-2" />
+              What Aspirants Say
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Trusted by successful
+                Trusted by Serious
               </span>
               <br />
-              <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
-                UPSC & defense aspirants
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+                Aspirants Across India
               </span>
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              "Breaking down news from multiple sides changed how I prepare for UPSC." — Anjali, Delhi
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -826,7 +863,7 @@ const LandingPage = () => {
                 </div>
 
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                 {` "${testimonial.content}"`}
+                  "{testimonial.content}"
                 </p>
 
                 <div className="flex items-center">
@@ -850,73 +887,78 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-red-600 via-red-700 to-red-800 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+      {/* FAQ Section */}
+      <section id="faq" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Ready to see the
-              <br />
-              <span className="text-red-200">full picture?</span>
-            </h2>
-            <p className="text-xl text-red-100 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Join thousands of competetive exam aspirants who have
-              transformed their current affairs preparation. Master multiple
-              perspectives and ace your exams today.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-red-700 px-12 py-4 rounded-2xl text-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-2xl"
-              >
-                Start Your Preparation
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-12 py-4 rounded-2xl text-lg font-bold hover:bg-white hover:text-red-700 transition-all duration-300"
-              >
-                Learn More
-              </motion.button>
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Common Questions
             </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                You Might Be
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent">
+                Wondering…
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Everything you need to know—about features, pricing, or how Doutya fits into your study routine.
+            </p>
           </motion.div>
-        </div>
 
-        {/* Enhanced Background Animation */}
-        <div className="absolute inset-0">
-          <motion.div
-            animate={{
-              rotate: 360,
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              rotate: { duration: 50, repeat: Infinity, ease: "linear" },
-              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="absolute -top-1/2 -right-1/2 w-full h-full bg-white/5 rounded-full"
-          />
-          <motion.div
-            animate={{
-              rotate: -360,
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-              scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-white/5 rounded-full"
-          />
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white border border-gray-200 rounded-2xl overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                >
+                  <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <motion.div
+                    animate={{ rotate: openFAQ === index ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown className="w-5 h-5 text-gray-500" />
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {openFAQ === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="border-t border-gray-200"
+                    >
+                      <div className="px-8 py-6 text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Enhanced Footer */}
-      <footer className="bg-gray-900 text-white py-10">
+      <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
@@ -926,10 +968,9 @@ const LandingPage = () => {
                 </div>
                 <span className="text-2xl font-bold">Doutya</span>
               </div>
+              <h3 className="text-xl font-bold mb-4">Built in India, for India's Future Thinkers.</h3>
               <p className="text-gray-400 mb-8 max-w-md leading-relaxed">
-                Master current affairs for competetive exams with
-                intelligent news perspectives. Get comprehensive preparation
-                from every angle.
+                Doutya PrepHelp — a purposeful tool for smart, serious preparation.
               </p>
               <div className="flex space-x-4">
                 {[Share2, Users, Globe, MessageCircle].map((Icon, index) => (
@@ -948,18 +989,18 @@ const LandingPage = () => {
               <h4 className="text-lg font-bold mb-6">Product</h4>
               <ul className="space-y-3 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#features" className="hover:text-white transition-colors">
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    News Map
+                  <a href="#how-it-works" className="hover:text-white transition-colors">
+                    How It Works
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Trending
+                  <a href="#pricing" className="hover:text-white transition-colors">
+                    Pricing
                   </a>
                 </li>
                 <li>
@@ -999,8 +1040,8 @@ const LandingPage = () => {
 
           <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Doutya. All rights reserved.
-              Built with ❤️ for competitive exam aspirants.
+              &copy; {new Date().getFullYear()} Doutya PrepHelp. All rights reserved.
+              Built with ❤️ for India's future thinkers.
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">
