@@ -1,44 +1,24 @@
 "use client";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Check,
-  X,
-  Crown,
-  Star,
   ArrowRight,
-  Users,
-  Clock,
-  BookOpen,
-  Globe,
-  Target,
-  Award,
-  Shield,
-  Zap,
-  Eye,
-  Calendar,
-  Download,
-  MessageCircle,
-  ChevronDown,
-  ChevronUp,
-  Newspaper,
-  TrendingUp,
-  MapPin,
-  Bookmark,
-  Brain,
-  Lightbulb,
-  Filter,
   BarChart3,
+  BookOpen,
+  Check,
+  Crown,
+  Newspaper,
+  Star,
+  Target,
+  X,
 } from "lucide-react";
+import { useState } from "react";
 
 const PricingPage = () => {
   const [billingCycle, setBillingCycle] = useState("monthly");
-  const [activeTab, setActiveTab] = useState("features");
-  const [expandedFaq, setExpandedFaq] = useState(null);
 
   const plans = [
     {
-      name: "Foundation",
+      name: "Starter",
       price: 29.99,
       yearlyPrice: 299.99,
       description:
@@ -64,7 +44,7 @@ const PricingPage = () => {
       ],
     },
     {
-      name: "Professional",
+      name: "Pro",
       price: 49.99,
       yearlyPrice: 499.99,
       description: "Most popular choice for serious competitive exam aspirants",
@@ -152,10 +132,10 @@ const PricingPage = () => {
       name: "Rahul Verma",
       role: "Civil Services 2023 - Rank 23",
       content:
-        "The Professional plan was perfect for my civil services preparation. The multiple perspectives helped me ace the interview round.",
+        "The Pro plan was perfect for my civil services preparation. The multiple perspectives helped me ace the interview round.",
       avatar:
         "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
-      plan: "Professional",
+      plan: "Pro",
     },
     {
       name: "Ananya Singh",
@@ -170,10 +150,10 @@ const PricingPage = () => {
       name: "Karthik Kumar",
       role: "Defense Services Qualified 2023",
       content:
-        "Started with Foundation plan and upgraded to Professional. Great value for comprehensive current affairs.",
+        "Started with Starter plan and upgraded to Pro. Great value for comprehensive current affairs.",
       avatar:
         "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
-      plan: "Foundation",
+      plan: "Starter",
     },
   ];
 
@@ -205,68 +185,6 @@ const PricingPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center h-16 sm:h-20">
-            <motion.div
-              className="flex items-center space-x-2 sm:space-x-3"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
-                <Newspaper className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <span className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Doutya
-              </span>
-            </motion.div>
-
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <a
-                href="#features"
-                className="text-gray-600 hover:text-red-600 transition-colors font-medium text-sm lg:text-base"
-              >
-                Features
-              </a>
-              <a
-                href="#pricing"
-                className="text-gray-600 hover:text-red-600 transition-colors font-medium text-sm lg:text-base"
-              >
-                Pricing
-              </a>
-              <a
-                href="#faq"
-                className="text-gray-600 hover:text-red-600 transition-colors font-medium text-sm lg:text-base"
-              >
-                FAQ
-              </a>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 lg:px-8 py-2 lg:py-3 rounded-xl lg:rounded-2xl hover:shadow-lg transition-all duration-300 font-semibold text-sm lg:text-base"
-              >
-                Start Free Trial
-              </motion.button>
-            </div>
-
-            {/* Mobile CTA */}
-            <div className="md:hidden">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold text-sm"
-              >
-                Start Trial
-              </motion.button>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
-
       {/* Hero Section */}
       <section className="pt-12 sm:pt-16  px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
@@ -286,18 +204,17 @@ const PricingPage = () => {
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">
                 <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  Invest in Your
+                  Plans That Respect Your
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">
-                  Exam Success
+                  Time and Your Budget
                 </span>
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4">
-                Choose the perfect plan for your competitive exam preparation.
-                Get comprehensive current affairs with multiple perspectives,
-                curated specifically for competitive exam aspirants.
+                Choose what you need: save a few, go deeper, or get full prep—no
+                distractions, no hidden costs.
               </p>
             </motion.div>
 
@@ -514,10 +431,10 @@ const PricingPage = () => {
                       Features
                     </th>
                     <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 text-sm sm:text-base">
-                      Foundation
+                      Starter
                     </th>
                     <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 bg-red-50 border-x-2 border-red-200 text-sm sm:text-base">
-                      Professional
+                      Pro
                       <span className="block text-xs text-red-600 font-normal mt-1">
                         Most Popular
                       </span>
@@ -531,56 +448,56 @@ const PricingPage = () => {
                   {[
                     {
                       feature: "Current Affairs Coverage",
-                      foundation: "Basic",
-                      professional: "Complete",
+                      starter: "Basic",
+                      pro: "Complete",
                       elite: "Unlimited",
                     },
                     {
                       feature: "Perspectives per News",
-                      foundation: "2",
-                      professional: "4",
+                      starter: "2",
+                      pro: "4",
                       elite: "4+",
                     },
                     {
                       feature: "Monthly Analysis Reports",
-                      foundation: "✓",
-                      professional: "Weekly",
+                      starter: "✓",
+                      pro: "Weekly",
                       elite: "Daily",
                     },
                     {
                       feature: "Global Affairs Map",
-                      foundation: "✗",
-                      professional: "✓",
+                      starter: "✗",
+                      pro: "✓",
                       elite: "✓",
                     },
                     {
                       feature: "Custom Folders",
-                      foundation: "Basic",
-                      professional: "Advanced",
+                      starter: "Basic",
+                      pro: "Advanced",
                       elite: "Unlimited",
                     },
                     {
                       feature: "AI Recommendations",
-                      foundation: "✗",
-                      professional: "✗",
+                      starter: "✗",
+                      pro: "✗",
                       elite: "✓",
                     },
                     {
                       feature: "Offline Reading",
-                      foundation: "✗",
-                      professional: "✗",
+                      starter: "✗",
+                      pro: "✗",
                       elite: "✓",
                     },
                     {
                       feature: "Priority Support",
-                      foundation: "✗",
-                      professional: "✓",
+                      starter: "✗",
+                      pro: "✓",
                       elite: "✓",
                     },
                     {
                       feature: "Interview Prep Content",
-                      foundation: "✗",
-                      professional: "✗",
+                      starter: "✗",
+                      pro: "✗",
                       elite: "✓",
                     },
                   ].map((row, index) => (
@@ -589,10 +506,10 @@ const PricingPage = () => {
                         {row.feature}
                       </td>
                       <td className="p-4 sm:p-6 text-center text-gray-600 text-sm sm:text-base">
-                        {row.foundation}
+                        {row.starter}
                       </td>
                       <td className="p-4 sm:p-6 text-center text-gray-600 bg-red-50 border-x border-red-100 font-semibold text-sm sm:text-base">
-                        {row.professional}
+                        {row.pro}
                       </td>
                       <td className="p-4 sm:p-6 text-center text-gray-600 text-sm sm:text-base">
                         {row.elite}

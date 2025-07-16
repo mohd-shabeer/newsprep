@@ -29,9 +29,6 @@ import {
   Lightbulb,
   Filter,
   BarChart3,
-  FolderOpen,
-  FileText,
-  BookmarkPlus,
 } from "lucide-react";
 
 const PricingPage = () => {
@@ -41,79 +38,82 @@ const PricingPage = () => {
 
   const plans = [
     {
-      name: "Basic",
-      price: 0,
-      yearlyPrice: 0,
-      description: "Essential features to get started with exam preparation",
+      name: "Starter",
+      price: 29.99,
+      yearlyPrice: 299.99,
+      description:
+        "Perfect for beginners starting their competitive exam journey",
       popular: false,
       color: "from-blue-500 to-cyan-600",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       icon: BookOpen,
       features: [
-        "Multiple perspectives on news",
-        "Basic saving (limited folders)",
-        "Global trending stories",
-        "Daily curated content",
+        "Basic current affairs coverage",
+        "2 perspectives per news",
+        "Monthly analysis reports",
+        "Basic study notes",
         "Mobile app access",
         "Community forum access",
         "Email support",
       ],
       limitations: [
-        "Limited to 50 saves per month",
-        "No personal notes feature",
-        "No exam-specific trending",
+        "Limited to 50 articles/month",
+        "No premium insights",
         "Standard support response",
       ],
     },
     {
       name: "Pro",
-      price: 99,
-      yearlyPrice: 990,
-      description: "Perfect for serious aspirants preparing for competitive exams",
+      price: 49.99,
+      yearlyPrice: 499.99,
+      description: "Most popular choice for serious competitive exam aspirants",
       popular: true,
       color: "from-red-500 to-orange-600",
       bgColor: "bg-red-50",
       borderColor: "border-red-300",
       icon: Target,
       features: [
-        "Everything in Basic",
-        "Unlimited saving with folders",
-        "Personal notes on saved articles",
-        "Exam-specific trending (UPSC, NDA, SSC)",
-        "Advanced organization tools",
+        "Complete current affairs coverage",
+        "4 perspectives per news",
         "Weekly detailed analysis",
-        "Priority customer support",
-        "Offline reading capability",
-        "Custom alerts & notifications",
+        "Advanced study notes with tags",
+        "Global affairs map access",
+        "Trending topics dashboard",
+        "Custom folder organization",
+        "Priority support",
+        "Exam-specific content curation",
       ],
       limitations: [
-        "Limited premium insights",
+        "Limited to 200 articles/month",
         "Standard download limits",
       ],
     },
     {
       name: "Elite",
-      price: 199,
-      yearlyPrice: 1990,
-      description: "Maximum preparation power for serious competitive exam aspirants",
+      price: 99.99,
+      yearlyPrice: 999.99,
+      description:
+        "Ultimate package for civil services & defense exam aspirants",
       popular: false,
       color: "from-purple-500 to-indigo-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-300",
       icon: Crown,
       features: [
-        "Everything in Pro",
-        "Premium analysis & insights",
+        "Unlimited current affairs access",
+        "All 4+ perspectives per news",
+        "Daily analysis & insights",
         "AI-powered study recommendations",
-        "Early access to new features",
+        "Premium global affairs tracking",
+        "Advanced analytics dashboard",
+        "Unlimited custom folders",
         "Personal study planner",
         "Expert-curated content",
+        "Priority customer support",
+        "Offline reading capability",
+        "Custom alerts & notifications",
         "Interview preparation content",
-        "Advanced analytics dashboard",
-        "Priority support",
-        "Custom study schedules",
-        "Exclusive webinars & sessions",
       ],
       limitations: [],
     },
@@ -121,9 +121,9 @@ const PricingPage = () => {
 
   const faqs = [
     {
-      question: "How does the multiple viewpoints feature work?",
+      question: "How does the perspective-based learning work?",
       answer:
-        "Each news article is analyzed from different perspectives - seeing how various countries, institutions, or stakeholders interpret the same event. This helps you understand the complete picture and prepare for comprehensive exam questions, group discussions, and interviews.",
+        "Each news article is analyzed from multiple viewpoints - Environmental, Political, Economic, and Social. This helps you understand the complete picture and develop a well-rounded perspective essential for competitive exam interviews and answer writing.",
     },
     {
       question: "Can I switch between plans anytime?",
@@ -131,14 +131,9 @@ const PricingPage = () => {
         "Yes, you can upgrade or downgrade your plan at any time. When upgrading, you'll get immediate access to new features. When downgrading, changes take effect at your next billing cycle.",
     },
     {
-      question: "What is exam-specific trending?",
+      question: "Is there a free trial available?",
       answer:
-        "In Pro and Elite plans, you can filter trending content by your specific exam track (UPSC, NDA, SSC, etc.) to see what fellow aspirants in your field are focusing on. This helps you stay aligned with what's important for your specific exam.",
-    },
-    {
-      question: "How do personal notes work?",
-      answer:
-        "With Pro and Elite plans, you can add personal notes to any saved article. These notes help you build your revision base and remember key insights for later review during your exam preparation.",
+        "We offer a 7-day free trial for new users to explore all features. No credit card required to start your trial.",
     },
     {
       question: "What payment methods do you accept?",
@@ -148,37 +143,37 @@ const PricingPage = () => {
     {
       question: "How often is the content updated?",
       answer:
-        "Our content is updated multiple times daily. We curate news specifically for exam relevance and provide real-time analysis to keep you updated with the latest developments important for competitive exams.",
+        "Our content is updated multiple times daily. We track news from over 500+ sources and provide real-time analysis to keep you updated with the latest developments.",
     },
   ];
 
   const testimonials = [
     {
-      name: "Anjali Sharma",
-      role: "UPSC Aspirant, Delhi",
+      name: "Rahul Verma",
+      role: "Civil Services 2023 - Rank 23",
       content:
-        "The Pro plan's exam-specific trending helped me focus on what other UPSC aspirants were reading. The multiple perspectives feature changed how I understand current affairs.",
+        "The Pro plan was perfect for my civil services preparation. The multiple perspectives helped me ace the interview round.",
       avatar:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
+        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
       plan: "Pro",
     },
     {
-      name: "Arjun Patel",
-      role: "IFS Aspirant, Mumbai",
+      name: "Ananya Singh",
+      role: "Foreign Service Officer 2023",
       content:
-        "Elite plan's personal notes feature helps me organize my study material perfectly. I can review key insights anytime, anywhere. Worth every rupee!",
+        "Elite plan's global affairs tracking was invaluable for my diplomatic services preparation. Worth every penny!",
       avatar:
-        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
       plan: "Elite",
     },
     {
-      name: "Sneha Reddy",
-      role: "CDS Aspirant, Bangalore",
+      name: "Karthik Kumar",
+      role: "Defense Services Qualified 2023",
       content:
-        "Started with Basic and upgraded to Pro. Seeing what other aspirants are reading keeps me updated with trending topics. It's like having a study group online.",
+        "Started with Starter plan and upgraded to Pro. Great value for comprehensive current affairs.",
       avatar:
-        "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
-      plan: "Pro",
+        "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face",
+      plan: "Starter",
     },
   ];
 
@@ -203,7 +198,6 @@ const PricingPage = () => {
   };
 
   const getDiscountPercentage = (monthly, yearly) => {
-    if (monthly === 0) return 0;
     const monthlyTotal = monthly * 12;
     const savings = monthlyTotal - yearly;
     return Math.round((savings / monthlyTotal) * 100);
@@ -255,7 +249,7 @@ const PricingPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 lg:px-8 py-2 lg:py-3 rounded-xl lg:rounded-2xl hover:shadow-lg transition-all duration-300 font-semibold text-sm lg:text-base"
               >
-                Start Learning
+                Start Free Trial
               </motion.button>
             </div>
 
@@ -266,7 +260,7 @@ const PricingPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold text-sm"
               >
-                Start Learning
+                Start Trial
               </motion.button>
             </div>
           </div>
@@ -274,7 +268,7 @@ const PricingPage = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="pt-12 sm:pt-16 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white">
+      <section className="pt-12 sm:pt-16  px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             variants={staggerContainer}
@@ -285,18 +279,18 @@ const PricingPage = () => {
               <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 text-red-700 rounded-full text-xs sm:text-sm font-semibold mb-6 sm:mb-8">
                 <Crown className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 <span className="hidden sm:inline">
-                  Plans That Respect Your Budget
+                  Choose Your Competitive Exam Success Plan
                 </span>
-                <span className="sm:hidden">Smart Pricing</span>
+                <span className="sm:hidden">Exam Success Plan</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">
                 <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  Plans That Respect Your Time—
+                  Plans That Respect Your 
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">
-                  and Your Budget.
+                 Time and Your Budget
                 </span>
               </h1>
 
@@ -331,7 +325,7 @@ const PricingPage = () => {
                 >
                   Yearly
                   <span className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 bg-green-500 text-white text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
-                    Save 17%
+                    Save 20%
                   </span>
                 </button>
               </div>
@@ -382,26 +376,18 @@ const PricingPage = () => {
                   </p>
 
                   <div className="mb-2 sm:mb-4">
-                    {plan.price === 0 ? (
-                      <span className="text-3xl sm:text-4xl font-bold text-gray-900">
-                        Free
-                      </span>
-                    ) : (
-                      <>
-                        <span className="text-3xl sm:text-4xl font-bold text-gray-900">
-                          ₹
-                          {billingCycle === "monthly"
-                            ? plan.price
-                            : plan.yearlyPrice}
-                        </span>
-                        <span className="text-gray-600 ml-2 text-sm sm:text-base">
-                          /{billingCycle === "monthly" ? "month" : "year"}
-                        </span>
-                      </>
-                    )}
+                    <span className="text-3xl sm:text-4xl font-bold text-gray-900">
+                      ₹
+                      {billingCycle === "monthly"
+                        ? plan.price
+                        : plan.yearlyPrice}
+                    </span>
+                    <span className="text-gray-600 ml-2 text-sm sm:text-base">
+                      /{billingCycle === "monthly" ? "month" : "year"}
+                    </span>
                   </div>
 
-                  {billingCycle === "yearly" && plan.price > 0 && (
+                  {billingCycle === "yearly" && (
                     <div className="text-xs sm:text-sm text-green-600 font-semibold">
                       Save {getDiscountPercentage(plan.price, plan.yearlyPrice)}
                       % annually
@@ -441,12 +427,10 @@ const PricingPage = () => {
                   className={`w-full py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center text-sm sm:text-base ${
                     plan.popular
                       ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg hover:shadow-xl"
-                      : plan.price === 0
-                      ? "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                      : "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg hover:shadow-xl"
+                      : "bg-gray-100 text-gray-900 hover:bg-gray-200"
                   }`}
                 >
-                  {plan.price === 0 ? "Get Started" : "Start Learning"}
+                  Get Started
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </motion.button>
               </motion.div>
@@ -478,8 +462,8 @@ const PricingPage = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              See exactly what&apos;s included in each plan to make the best choice
-              for your exam preparation.
+              See exactly what&apos;s included in each plan to make the best
+              choice for your exam preparation.
             </p>
           </motion.div>
 
@@ -496,19 +480,13 @@ const PricingPage = () => {
                       {plan.name}
                     </h3>
                     <div className="text-2xl sm:text-3xl font-bold text-gray-900">
-                      {plan.price === 0 ? (
-                        "Free"
-                      ) : (
-                        <>
-                          ₹
-                          {billingCycle === "monthly"
-                            ? plan.price
-                            : plan.yearlyPrice}
-                          <span className="text-sm text-gray-600 ml-1">
-                            /{billingCycle === "monthly" ? "mo" : "yr"}
-                          </span>
-                        </>
-                      )}
+                      ₹
+                      {billingCycle === "monthly"
+                        ? plan.price
+                        : plan.yearlyPrice}
+                      <span className="text-sm text-gray-600 ml-1">
+                        /{billingCycle === "monthly" ? "mo" : "yr"}
+                      </span>
                     </div>
                   </div>
                   <ul className="space-y-2">
@@ -534,7 +512,7 @@ const PricingPage = () => {
                       Features
                     </th>
                     <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 text-sm sm:text-base">
-                      Basic
+                      Starter
                     </th>
                     <th className="text-center p-4 sm:p-6 font-semibold text-gray-900 bg-red-50 border-x-2 border-red-200 text-sm sm:text-base">
                       Pro
@@ -550,57 +528,57 @@ const PricingPage = () => {
                 <tbody>
                   {[
                     {
-                      feature: "Multiple Viewpoints",
-                      basic: "✓",
-                      pro: "✓",
-                      elite: "✓",
-                    },
-                    {
-                      feature: "Basic Saving & Folders",
-                      basic: "Limited",
-                      pro: "Unlimited",
+                      feature: "Current Affairs Coverage",
+                      starter: "Basic",
+                      pro: "Complete",
                       elite: "Unlimited",
                     },
                     {
-                      feature: "Personal Notes",
-                      basic: "✗",
+                      feature: "Perspectives per News",
+                      starter: "2",
+                      pro: "4",
+                      elite: "4+",
+                    },
+                    {
+                      feature: "Monthly Analysis Reports",
+                      starter: "✓",
+                      pro: "Weekly",
+                      elite: "Daily",
+                    },
+                    {
+                      feature: "Global Affairs Map",
+                      starter: "✗",
                       pro: "✓",
                       elite: "✓",
                     },
                     {
-                      feature: "Global Trending",
-                      basic: "✓",
-                      pro: "✓",
-                      elite: "✓",
-                    },
-                    {
-                      feature: "Exam-Specific Trending",
-                      basic: "✗",
-                      pro: "✓",
-                      elite: "✓",
-                    },
-                    {
-                      feature: "Premium Analysis",
-                      basic: "✗",
-                      pro: "✗",
-                      elite: "✓",
+                      feature: "Custom Folders",
+                      starter: "Basic",
+                      pro: "Advanced",
+                      elite: "Unlimited",
                     },
                     {
                       feature: "AI Recommendations",
-                      basic: "✗",
+                      starter: "✗",
                       pro: "✗",
                       elite: "✓",
                     },
                     {
                       feature: "Offline Reading",
-                      basic: "✗",
-                      pro: "✓",
+                      starter: "✗",
+                      pro: "✗",
                       elite: "✓",
                     },
                     {
                       feature: "Priority Support",
-                      basic: "✗",
+                      starter: "✗",
                       pro: "✓",
+                      elite: "✓",
+                    },
+                    {
+                      feature: "Interview Prep Content",
+                      starter: "✗",
+                      pro: "✗",
                       elite: "✓",
                     },
                   ].map((row, index) => (
@@ -609,7 +587,7 @@ const PricingPage = () => {
                         {row.feature}
                       </td>
                       <td className="p-4 sm:p-6 text-center text-gray-600 text-sm sm:text-base">
-                        {row.basic}
+                        {row.starter}
                       </td>
                       <td className="p-4 sm:p-6 text-center text-gray-600 bg-red-50 border-x border-red-100 font-semibold text-sm sm:text-base">
                         {row.pro}
@@ -642,7 +620,7 @@ const PricingPage = () => {
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Trusted by Aspirants
+                Trusted by Toppers
               </span>
             </h2>
           </motion.div>
@@ -692,7 +670,7 @@ const PricingPage = () => {
         id="faq"
         className="py-6 sm:py-8 bg-gradient-to-br from-gray-50 to-white"
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -770,13 +748,13 @@ const PricingPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-              Start Your Exam Journey
+              Start Your Competitive Exam Journey
               <br />
               <span className="text-red-200">Today</span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-red-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
               Join thousands of successful aspirants who chose Doutya for their
-              exam preparation. Start with our Basic plan.
+              exam preparation. Start with our 7-day free trial.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
@@ -785,7 +763,7 @@ const PricingPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-red-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-2xl"
               >
-                Start Learning
+                Start Free Trial
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05, y: -3 }}

@@ -991,7 +991,7 @@ const LandingPage = () => {
 
       {/* FAQ Section */}
       <section id="faq" className="py-8 sm:py-12 lg:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
