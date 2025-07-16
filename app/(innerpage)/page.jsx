@@ -488,7 +488,7 @@ const LandingPage = () => {
                 variants={fadeInUp}
                 className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0"
               >
-                Current affairs made for aspirants. Get structured summaries with multiple perspectives — so you're always ready for group discussions, interviews, essays, and beyond.
+                Current affairs made for aspirants. Get structured summaries with multiple perspectives — so you&apos;re always ready for group discussions, interviews, essays, and beyond.
               </motion.p>
 
               <motion.div
