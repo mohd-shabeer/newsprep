@@ -42,9 +42,13 @@ import {
   Minus,
   Menu,
   X,
+  FolderOpen,
+  FileText,
+  BookmarkPlus,
 } from "lucide-react";
 import Link from "next/link";
 import PricingPage from "../_components/PricingPage";
+// Removed PricingPage import
 
 const LandingPage = () => {
   const [currentPerspective, setCurrentPerspective] = useState(0);
@@ -156,43 +160,43 @@ const LandingPage = () => {
   const features = [
     {
       icon: Eye,
-      title: "Multiple Perspectives",
+      title: "Multiple Viewpoints",
       description:
-        "Actor-based viewpoints help you understand complex current affairs from environmental, political, economic, and social angles essential for comprehensive exam preparation.",
+        "Understand how different countries, institutions, or sides view the same story — not opinions, but real perspectives that help you think deeply.",
       color: "from-red-500 to-pink-600",
       bgColor: "bg-red-50",
       image:
         "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
     },
     {
-      icon: Globe,
-      title: "Global Affairs Map",
+      icon: FolderOpen,
+      title: "Save & Organize",
       description:
-        "Visualize international relations and geopolitical events with smart organization tools. Perfect for understanding global dynamics and trends.",
+        "Save important articles. Group them into folders. Add personal notes (Pro & Elite) to build your revision base.",
       color: "from-blue-500 to-cyan-600",
       bgColor: "bg-blue-50",
-      image:
-        "https://images.pexels.com/photos/335393/pexels-photo-335393.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
-    },
-    {
-      icon: Bookmark,
-      title: "Smart Saving",
-      description:
-        "Save what matters with organized folders and notes. Build your knowledge base efficiently and review insights when you need them most.",
-      color: "from-green-500 to-emerald-600",
-      bgColor: "bg-green-50",
       image:
         "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
     },
     {
       icon: TrendingUp,
-      title: "Peer Trends",
+      title: "Trending by Aspirants",
       description:
-        "See what fellow aspirants are reading and saving. Stay connected with trending topics and important events in the competitive exam community.",
+        "See the most saved articles across Doutya. In Pro and Elite, filter trending by your exam — see what UPSC, NDA, or SSC aspirants are reading today.",
+      color: "from-green-500 to-emerald-600",
+      bgColor: "bg-green-50",
+      image:
+        "https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
+    },
+    {
+      icon: Target,
+      title: "Designed for Exam Prep",
+      description:
+        "Every article is selected and structured with aspirants in mind — relevance to GS papers, interviews, current events, and debates.",
       color: "from-purple-500 to-indigo-600",
       bgColor: "bg-purple-50",
       image:
-        "https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
     },
   ];
 
@@ -257,27 +261,70 @@ const LandingPage = () => {
     {
       question: "How does the multi-perspective feature work?",
       answer:
-        "Each news story is analyzed from different actor-based viewpoints - environmental, political, economic, and social. This helps you understand the complete picture and prepare for comprehensive exam questions.",
+        "Each news story is analyzed from different viewpoints - seeing how different countries, institutions, or stakeholders interpret the same event. This helps you understand the complete picture and prepare for comprehensive exam questions, group discussions, and interviews.",
     },
     {
       question: "Can I save articles for later review?",
       answer:
-        "Yes! Our smart saving feature lets you organize articles into custom folders with notes. You can easily review your saved insights anytime and build your personal knowledge base.",
+        "Yes! Our smart saving feature lets you organize articles into custom folders with notes (Pro & Elite plans). You can easily review your saved insights anytime and build your personal knowledge base for revision.",
     },
     {
       question: "What makes Doutya different from other news apps?",
       answer:
-        "Doutya is specifically built for serious aspirants. We focus on exam-ready content with multi-perspective analysis, peer trends, and smart organization - all designed to enhance your preparation efficiency.",
+        "Doutya is specifically built for serious aspirants. We focus on exam-ready content with multi-perspective analysis, trending by exam type, and smart organization - all designed to enhance your preparation for group discussions, interviews, essays, and Mains papers.",
     },
     {
       question: "How often is the content updated?",
       answer:
-        "We update our content daily with over 10,000 new stories. Our AI ensures you get the most relevant and exam-focused current affairs content consistently.",
+        "We update our content daily with curated stories selected specifically for their relevance to competitive exams. Our team ensures you get the most exam-focused current affairs content consistently.",
     },
     {
-      question: "Is there a free version available?",
+      question: "Can I see what other aspirants are reading?",
       answer:
-        "Yes, we offer different plans to respect your budget. You can start with basic features and upgrade as needed - no hidden costs, just transparent pricing for serious preparation.",
+        "Yes! Our trending feature shows the most saved articles across all Doutya users. With Pro and Elite plans, you can filter trending content by your specific exam track (UPSC, NDA, SSC, etc.) to see what fellow aspirants in your field are focusing on.",
+    },
+  ];
+
+  const howItWorksSteps = [
+    {
+      step: "01",
+      title: "Browse Curated News",
+      description: "Get the latest news summaries — curated daily from global and national sources, selected specifically for exam relevance.",
+      icon: BookOpen,
+      color: "from-red-500 to-pink-500",
+      image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
+    },
+    {
+      step: "02", 
+      title: "View Multiple Perspectives",
+      description: "See each story from different viewpoints — understand how various actors and institutions interpret the same event.",
+      icon: Eye,
+      color: "from-blue-500 to-cyan-500",
+      image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
+    },
+    {
+      step: "03",
+      title: "Save What Matters",
+      description: "Organize important articles into folders and add personal notes (Pro/Elite) to build your revision base.",
+      icon: BookmarkPlus,
+      color: "from-green-500 to-emerald-500", 
+      image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
+    },
+    {
+      step: "04",
+      title: "Check Trending Stories",
+      description: "See what other aspirants are saving, with exam-specific filtering (Pro/Elite) to track your field's focus areas.",
+      icon: TrendingUp,
+      color: "from-purple-500 to-indigo-500",
+      image: "https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
+    },
+    {
+      step: "05",
+      title: "Review & Prepare",
+      description: "Use your organized content for Mains preparation, interview practice, group discussions, and essay writing.",
+      icon: Target,
+      color: "from-orange-500 to-red-500",
+      image: "https://images.pexels.com/photos/301926/pexels-photo-301926.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
     },
   ];
 
@@ -441,8 +488,7 @@ const LandingPage = () => {
                 variants={fadeInUp}
                 className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0"
               >
-                Structured current affairs for aspirants—multi-perspective
-                summaries, smart saving, and exam-ready focus.
+                Current affairs made for aspirants. Get structured summaries with multiple perspectives — so you're always ready for group discussions, interviews, essays, and beyond.
               </motion.p>
 
               <motion.div
@@ -724,8 +770,7 @@ const LandingPage = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-              From actor-based viewpoints to smart organization and peer trends,
-              every feature is built to help you prepare better.
+              From multiple viewpoints to smart organization and exam-specific trending, every feature is built to help you prepare better.
             </p>
           </motion.div>
 
@@ -803,62 +848,30 @@ const LandingPage = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Prep that&apos;s Simple to Use,
+                From Browse to Master,
               </span>
               <br />
               <span className="bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent">
-                Powerful in Impact.
+                in Five Simple Steps.
               </span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-              Read stories. See every angle. Save what matters. Review your
-              insights. Do it all, in a few intuitive steps.
+              Browse curated news. View multiple perspectives. Save what matters. Check trending stories. Review and prepare for success.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-            {[
-              {
-                step: "01",
-                title: "Read Stories",
-                description:
-                  "Access curated current affairs content specifically relevant for competitive exams, updated daily with the most important stories.",
-                icon: BookOpen,
-                color: "from-red-500 to-pink-500",
-                image:
-                  "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
-              },
-              {
-                step: "02",
-                title: "See Every Angle",
-                description:
-                  "Understand each topic from multiple actor-based perspectives - political, economic, environmental, and social viewpoints for comprehensive understanding.",
-                icon: Eye,
-                color: "from-blue-500 to-cyan-500",
-                image:
-                  "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
-              },
-              {
-                step: "03",
-                title: "Save & Review",
-                description:
-                  "Smart saving with organized folders and notes. Review your insights anytime and build exam-ready knowledge systematically.",
-                icon: Bookmark,
-                color: "from-green-500 to-emerald-500",
-                image:
-                  "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop",
-              },
-            ].map((step, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 sm:gap-8 lg:gap-6">
+            {howItWorksSteps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center group"
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="text-center group relative"
               >
                 <div className="relative mb-6 sm:mb-8">
-                  <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden">
+                  <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden">
                     <img
                       src={step.image}
                       alt={step.title}
@@ -877,20 +890,30 @@ const LandingPage = () => {
                 <div className="text-xs sm:text-sm font-bold text-red-600 mb-2 sm:mb-3">
                   {step.step}
                 </div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-600 leading-relaxed text-sm">
                   {step.description}
                 </p>
+
+                {/* Arrow connector for larger screens */}
+                {index < howItWorksSteps.length - 1 && (
+                  <div className="hidden xl:block absolute top-1/3 -right-3 text-gray-300">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      <section id="pricing">
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-8 sm:py-12 lg:py-16 bg-white">
         <PricingPage />
       </section>
+
       {/* Enhanced Testimonials Section */}
       <section
         id="testimonials"
